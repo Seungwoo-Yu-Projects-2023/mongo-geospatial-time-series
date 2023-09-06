@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  mongo1:
+    image: mongo:latest
+    container_name: mongo1
+    restart: always
+    ports:
+      - '21237:21237'
+    volumes:
+      - /Users/ryan/Desktop/others/keys/mongo-test.key:/etc/mongo-test.key
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    command:
+      - '--replSet'
+      - 'replSet'
+      - '--keyFile'
+      - '/etc/mongo-test.key'
+      - '--bind_ip_all'
+      - '--port'
+      - '21237'
